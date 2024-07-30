@@ -1,21 +1,20 @@
 
 pipeline {
-  agent none
+  agent any
   stages {
-    stage('Maven Install') {
-      agent {
-        docker {
-          image 'maven:3.5.0'
+     stage('Checkout') {
+            steps {
+               checkout scm
+            }
         }
-      }
+    stage('Docker Build') {
       steps {
-        sh 'mvn clean install'
+        sh 'docker build -t honeyy02/hello-world-java .'
       }
     }
-    stage('Docker Build') {
-      agent any
+    stage('Docker Run') {
       steps {
-        sh 'docker build -t shanem/spring-petclinic:latest .'
+        sh 'docker run honeyy02/hello-world-java'
       }
     }
   }
