@@ -14,6 +14,7 @@ checkout scm
 stage('Building our image') {
 steps{
 script {
+   sh 'docker login -u honeyy02'
 dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
 }
