@@ -5,7 +5,7 @@ pipeline{
         DOCKER_IMAGE_NAME = "honeyy02/java-helloworld"
     }
     stages{   
-        stage("checkout"){
+        stage('checkout'){
             steps{
                 checkout scm
             }
@@ -21,14 +21,14 @@ pipeline{
             // Execute the Java program
             sh 'java Main'
           } 
-        stage("Build docker image"){
+        stage ("Build docker image"){
             steps{
                 script{
                     docker.build("${DOCKER_IMAGE_NAME}:latest")
                 }
             }
         }
-        stage("Push the docker image"){
+        stage('Push the docker image') {
             steps{
                 script{
                     docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
