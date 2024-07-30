@@ -4,8 +4,7 @@ pipeline{
         DOCKER_CREDENTIAL_ID = "docker_hub_credentials"
         DOCKER_IMAGE_NAME = "honeyy02/java-helloworld"
     }
-    stages{
-        
+    stages{   
         stage("checkout"){
             steps{
                 checkout scm
@@ -17,11 +16,11 @@ pipeline{
             sh 'javac Main.java'
         }
 
-    stage('Run') {
+        stage('Run') {
             echo "Running..."
             // Execute the Java program
             sh 'java Main'
-        }
+          } 
         stage("Build docker image"){
             steps{
                 script{
@@ -45,3 +44,4 @@ pipeline{
         }
     }
 }
+}    
