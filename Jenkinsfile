@@ -41,12 +41,6 @@ pipeline{
                 }
             }
         }
-    }
-      post {
-        always {
-            // Clean up Docker images to save space
-            sh 'docker system prune -af'
         }
-    }
 }
 }    
