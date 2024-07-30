@@ -20,9 +20,11 @@ pipeline{
         }
 
         stage('Run') {
+            steps{
             echo "Running..."
             // Execute the Java program
             sh 'java Main'
+            }
           } 
         stage ("Build docker image"){
             steps{
