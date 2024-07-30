@@ -11,9 +11,12 @@ pipeline{
             }
         }
         stage('Compile') {
+            steps{
+                
             echo "Building..."
             // Compile the Java code
             sh 'javac Main.java'
+            }
         }
 
         stage('Run') {
