@@ -5,10 +5,22 @@ pipeline{
         DOCKER_IMAGE_NAME = "honeyy02/java-helloworld"
     }
     stages{
+        
         stage("checkout"){
             steps{
                 checkout scm
             }
+        }
+        stage('Compile') {
+            echo "Building..."
+            // Compile the Java code
+            sh 'javac Main.java'
+        }
+
+    stage('Run') {
+            echo "Running..."
+            // Execute the Java program
+            sh 'java Main'
         }
         stage("Build docker image"){
             steps{
