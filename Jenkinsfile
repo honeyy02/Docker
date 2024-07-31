@@ -19,7 +19,8 @@ pipeline {
     }
     stage('Docker Login') {
       steps {
-        sh 'docker login -u honeyy02'
+        withCredentials([string(credentialsId: 'docker_hub-credentials', variable: 'DOCKERHUB_PASSWORD')]) {
+          sh 'echo $DOCKERHUB_PASSWORD | docker login -u honeyy02 --password-stdin'
       }
     }
     stage('Docker Push') {
