@@ -17,5 +17,15 @@ pipeline {
         sh 'docker run honeyy02/hello-world-java'
       }
     }
+    stage('Docker Login') {
+      steps {
+        sh 'docker login -u honeyy02'
+      }
+    }
+    stage('Docker Push') {
+      steps {
+        sh 'docker push honeyy02/hello-world-java'
+      }
+    }
   }
 }
