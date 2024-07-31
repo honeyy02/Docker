@@ -23,6 +23,7 @@ pipeline {
           sh 'echo $DOCKERHUB_PASSWORD | docker login -u honeyy02 --password-stdin'
       }
     }
+    }
     stage('Docker Push') {
       steps {
         sh 'docker push honeyy02/hello-world-java'
